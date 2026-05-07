@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ScaffoldVision</title>
+    <link rel="stylesheet" href="/src/styles.css" />
+  </head>
+  <body>
+    <div id="app">
+      <header class="app-header">
+        <div class="brand">
+          <span class="brand-mark">⌬</span>
+          <span class="brand-name">ScaffoldVision</span>
+        </div>
+        <nav class="app-nav">
+          <span class="nav-status" id="status">Ready</span>
+        </nav>
+      </header>
+
+      <main class="app-main">
+        <aside class="panel panel-left">
+          <section class="panel-section">
+            <h2>Building</h2>
+            <div class="field">
+              <label for="building-width">Width (m)</label>
+              <input id="building-width" type="number" min="1" step="0.5" value="10" />
+            </div>
+            <div class="field">
+              <label for="building-height">Height (m)</label>
+              <input id="building-height" type="number" min="1" step="0.5" value="6" />
+            </div>
+            <div class="field">
+              <label for="building-depth">Depth (m)</label>
+              <input id="building-depth" type="number" min="1" step="0.5" value="8" />
+            </div>
+          </section>
+
+          <section class="panel-section">
+            <h2>Preferences</h2>
+            <div class="field">
+              <label for="bay-width">Bay width (m)</label>
+              <input id="bay-width" type="number" min="0.5" step="0.1" value="2.5" />
+            </div>
+            <div class="field">
+              <label for="lift-height">Lift height (m)</label>
+              <input id="lift-height" type="number" min="0.5" step="0.1" value="2.0" />
+            </div>
+            <div class="field field-checkbox">
+              <input id="wrap-around" type="checkbox" />
+              <label for="wrap-around">Wrap around all sides</label>
+            </div>
+          </section>
+
+          <section class="panel-section">
+            <button id="btn-recommend" class="btn btn-primary">
+              Generate recommendation
+            </button>
+          </section>
+        </aside>
+
+        <section class="viewport-wrap">
+          <div id="viewport"></div>
+          <div class="viewport-overlay">
+            <div class="legend">
+              <div class="legend-item"><span class="dot dot-standard"></span>Standards</div>
+              <div class="legend-item"><span class="dot dot-ledger"></span>Ledgers</div>
+              <div class="legend-item"><span class="dot dot-platform"></span>Platforms</div>
+              <div class="legend-item"><span class="dot dot-brace"></span>Braces</div>
+            </div>
+          </div>
+        </section>
+
+        <aside class="panel panel-right">
+          <section class="panel-section">
+            <h2>Recommendation</h2>
+            <div id="recommendation-output" class="recommendation">
+              <p class="empty-state">
+                Enter dimensions and click <em>Generate recommendation</em>
+                to see a suggested scaffold layout.
+              </p>
+            </div>
+          </section>
+        </aside>
+      </main>
+    </div>
+
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

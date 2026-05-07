@@ -1,0 +1,472 @@
+/* ScaffoldVision - industrial/engineering aesthetic.
+   Steel greys, structural orange accents, monospaced numerics. */
+
+:root {
+  --bg-deep: #0e1116;
+  --bg-elevated: #161a21;
+  --bg-panel: #1c2129;
+  --border: #2a3038;
+  --border-strong: #3a4250;
+
+  --text-primary: #e6e9ef;
+  --text-secondary: #9aa3b0;
+  --text-tertiary: #6b7280;
+
+  --accent: #ff7a18;
+  --accent-soft: #ffa05a;
+  --accent-dim: #5a3216;
+
+  --success: #4ade80;
+  --warning: #facc15;
+
+  --color-standard: #ff7a18;
+  --color-ledger: #38bdf8;
+  --color-platform: #a3a3a3;
+  --color-brace: #c084fc;
+
+  --font-display: 'IBM Plex Sans', 'Helvetica Neue', sans-serif;
+  --font-mono: 'JetBrains Mono', 'IBM Plex Mono', 'SF Mono', Menlo, monospace;
+
+  --radius: 4px;
+  --shadow-soft: 0 1px 2px rgba(0, 0, 0, 0.3);
+  --shadow-elevated: 0 8px 24px rgba(0, 0, 0, 0.4);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body, #app {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+
+body {
+  font-family: var(--font-display);
+  font-size: 14px;
+  color: var(--text-primary);
+  background: var(--bg-deep);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* === Layout === */
+
+#app {
+  display: flex;
+  flex-direction: column;
+}
+
+.app-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 48px;
+  padding: 0 20px;
+  background: var(--bg-elevated);
+  border-bottom: 1px solid var(--border);
+  flex-shrink: 0;
+}
+
+.brand {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.brand-mark {
+  color: var(--accent);
+  font-size: 22px;
+  line-height: 1;
+}
+
+.brand-name {
+  font-size: 15px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.nav-status {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text-tertiary);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.nav-status::before {
+  content: '●';
+  color: var(--success);
+  margin-right: 6px;
+}
+
+.app-main {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 280px 1fr 340px;
+  overflow: hidden;
+}
+
+/* === Side panels === */
+
+.panel {
+  background: var(--bg-panel);
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.panel-left {
+  border-right: 1px solid var(--border);
+}
+
+.panel-right {
+  border-left: 1px solid var(--border);
+}
+
+.panel-section {
+  padding: 18px 20px;
+  border-bottom: 1px solid var(--border);
+}
+
+.panel-section:last-child {
+  border-bottom: none;
+}
+
+.panel-section h2 {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--text-tertiary);
+  margin-bottom: 14px;
+}
+
+/* === Form fields === */
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 12px;
+}
+
+.field:last-child {
+  margin-bottom: 0;
+}
+
+.field label {
+  font-size: 12px;
+  color: var(--text-secondary);
+}
+
+.field input[type="number"] {
+  background: var(--bg-deep);
+  border: 1px solid var(--border-strong);
+  color: var(--text-primary);
+  font-family: var(--font-mono);
+  font-size: 13px;
+  padding: 8px 10px;
+  border-radius: var(--radius);
+  outline: none;
+  transition: border-color 120ms ease;
+}
+
+.field input[type="number"]:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 2px rgba(255, 122, 24, 0.15);
+}
+
+.field-checkbox {
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+}
+
+.field-checkbox label {
+  cursor: pointer;
+}
+
+input[type="checkbox"] {
+  accent-color: var(--accent);
+  cursor: pointer;
+}
+
+/* === Buttons === */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 10px 14px;
+  font-family: var(--font-display);
+  font-size: 13px;
+  font-weight: 500;
+  border: none;
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: background 120ms ease, transform 80ms ease;
+}
+
+.btn:active {
+  transform: translateY(1px);
+}
+
+.btn-primary {
+  background: var(--accent);
+  color: #1a0d04;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.btn-primary:hover {
+  background: var(--accent-soft);
+}
+
+.btn-primary:disabled {
+  background: var(--border-strong);
+  color: var(--text-tertiary);
+  cursor: not-allowed;
+}
+
+/* === Viewport === */
+
+.viewport-wrap {
+  position: relative;
+  background: var(--bg-deep);
+}
+
+#viewport {
+  position: absolute;
+  inset: 0;
+}
+
+#viewport canvas {
+  display: block;
+}
+
+.viewport-overlay {
+  position: absolute;
+  bottom: 16px;
+  left: 16px;
+  pointer-events: none;
+}
+
+.legend {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 12px 14px;
+  background: rgba(22, 26, 33, 0.85);
+  backdrop-filter: blur(8px);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text-secondary);
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 2px;
+  display: inline-block;
+}
+
+.dot-standard { background: var(--color-standard); }
+.dot-ledger { background: var(--color-ledger); }
+.dot-platform { background: var(--color-platform); }
+.dot-brace { background: var(--color-brace); }
+
+/* === Recommendation panel === */
+
+.recommendation {
+  font-size: 13px;
+}
+
+.empty-state {
+  color: var(--text-tertiary);
+  font-size: 12px;
+  line-height: 1.6;
+  padding: 16px;
+  border: 1px dashed var(--border-strong);
+  border-radius: var(--radius);
+  text-align: center;
+}
+
+.empty-state em {
+  color: var(--accent);
+  font-style: normal;
+  font-weight: 500;
+}
+
+.summary-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.summary-card {
+  padding: 10px 12px;
+  background: var(--bg-deep);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+
+.summary-card-label {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-tertiary);
+  margin-bottom: 4px;
+}
+
+.summary-card-value {
+  font-family: var(--font-mono);
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.summary-card-unit {
+  font-size: 11px;
+  color: var(--text-secondary);
+  margin-left: 3px;
+}
+
+.line-items {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  margin-bottom: 14px;
+}
+
+.line-item {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  gap: 10px;
+  padding: 8px 12px;
+  font-size: 12px;
+  border-bottom: 1px solid var(--border);
+}
+
+.line-item:last-child {
+  border-bottom: none;
+}
+
+.line-item-name {
+  color: var(--text-primary);
+}
+
+.line-item-qty {
+  font-family: var(--font-mono);
+  color: var(--text-secondary);
+}
+
+.line-item-total {
+  font-family: var(--font-mono);
+  color: var(--text-primary);
+  text-align: right;
+  min-width: 60px;
+}
+
+.totals {
+  padding: 10px 12px;
+  background: var(--bg-deep);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  font-family: var(--font-mono);
+  font-size: 13px;
+}
+
+.totals-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 4px;
+}
+
+.totals-row:last-child {
+  margin-bottom: 0;
+  padding-top: 6px;
+  border-top: 1px solid var(--border);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--accent);
+}
+
+.notes {
+  margin-top: 14px;
+  padding: 10px 12px;
+  background: rgba(250, 204, 21, 0.05);
+  border-left: 2px solid var(--warning);
+  border-radius: 0 var(--radius) var(--radius) 0;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.notes-title {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--warning);
+  margin-bottom: 6px;
+}
+
+.notes ul {
+  list-style: none;
+  padding: 0;
+}
+
+.notes li {
+  margin-bottom: 4px;
+  color: var(--text-secondary);
+}
+
+.notes li:last-child {
+  margin-bottom: 0;
+}
+
+.notes li::before {
+  content: '— ';
+  color: var(--warning);
+}
+
+/* === Scrollbars === */
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-panel);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border-strong);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-tertiary);
+}
+
+/* === Responsive (basic) === */
+
+@media (max-width: 1100px) {
+  .app-main {
+    grid-template-columns: 240px 1fr 300px;
+  }
+}

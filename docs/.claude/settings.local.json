@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "Read(//c/Users/anson/Desktop/applications/Layher/scaffold-vision/backend/**)",
+      "Bash(dotnet run:*)",
+      "Read(//c/Users/anson/Desktop/applications/Layher/scaffold-vision/frontend/**)",
+      "Bash(npm install:*)",
+      "Bash(npm run:*)",
+      "Bash(Read \"C:\\\\Users\\\\anson\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\C--Users-anson-Desktop-applications-Layher-scaffold-vision-docs\\\\a81e6e7d-f013-407f-9984-ed6b6a411ff9\\\\tasks\\\\b0jv7lpzt.output\")",
+      "Bash(winget install:*)",
+      "Bash(node capture-screenshots.js)"
+    ]
+  }
+}
