@@ -84,16 +84,18 @@ The minimal-dependency choice is intentional. It means anyone can clone, build, 
 
 ### Run the backend
 
+Open a terminal and run:
+
 ```bash
 cd backend
-dotnet run --project src/ScaffoldVision.Api
+dotnet run --project src/ScaffoldVision.Api/ScaffoldVision.Api.csproj
 ```
 
 The API listens on `http://localhost:5000`.
 
 ### Run the frontend
 
-In a second terminal:
+Open a **second terminal** and run:
 
 ```bash
 cd frontend
